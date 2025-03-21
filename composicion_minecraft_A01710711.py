@@ -1,10 +1,10 @@
 from music21 import note, stream, tempo
 
-# Mano izquierda de la canción
 def tempoFunc(pent):
     temp = tempo.MetronomeMark(number=74)
     pent.append(temp)
 
+# Mano izquierda de la canción
 def first_part(pent):
     la_2 = note.Note('A2')
     la_2.duration.quarterLength = 0.5
@@ -67,13 +67,40 @@ def wet_hands_left(pent):
     first_part(pent)
     second_part(pent)
 
-pentagrama = stream.Stream()
+# Mano derecha de la cancion
+def first_part_right(pent):
+    total_duration = (8 * 0.5) + (5 * 0.5) + 1.5
+    silencio = note.Rest()
+    silencio.duration.quarterLength = total_duration
+    pent.append(silencio)
 
-tempoFunc(pentagrama)
+def second_part_right(pent):
+    sol_sos = note.Note('G#4')
+    sol_sos.duration.quarterLength = 3
+    pent.append(sol_sos)
 
-for i in range(3):
-    wet_hands_left(pentagrama)
+def wet_hands_right(pent):
+    for i in range(2):
+        first_part_right(pent)
+    second_part_right(pent)
 
-pentagrama.show()
+pentagramaIzq = stream.Part()
+pentagramaDer = stream.Part()
 
-pentagrama.write('midi', 'wet_hands.mid')
+tempoFunc(pentagramaIzq)
+tempoFunc(pentagramaDer)
+
+for i in range(2):
+    wet_hands_left(pentagramaIzq)
+
+wet_hands_right(pentagramaDer) 
+       
+
+
+score = stream.Score()
+score.append(pentagramaIzq)
+score.append(pentagramaDer)
+
+score.show()
+
+#score.write('midi', 'wet_hands.mid')
