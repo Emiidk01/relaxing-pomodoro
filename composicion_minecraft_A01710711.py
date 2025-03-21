@@ -5,7 +5,7 @@ def tempoFunc(pent):
     pent.append(temp)
 
 # Mano izquierda de la canción
-def first_part(pent):
+def first_part_left(pent):
     la_2 = note.Note('A2')
     la_2.duration.quarterLength = 0.5
     pent.append(la_2)
@@ -38,7 +38,7 @@ def first_part(pent):
     mi.duration.quarterLength = 0.5
     pent.append(mi)
 
-def second_part(pent):
+def second_part_left(pent):
     re = note.Note('D3')
     re.duration.quarterLength = 0.5
     pent.append(re)
@@ -63,9 +63,64 @@ def second_part(pent):
     la.duration.quarterLength = 1.5
     pent.append(la)
 
+def third_part_left(pent):
+    sol = note.Note('G2')
+    sol.duration.quarterLength = 0.5
+    pent.append(sol)
+
+    si = note.Note('B2')
+    si.duration.quarterLength = 0.5
+    pent.append(si)
+
+    re = note.Note('D3')
+    re.duration.quarterLength = 0.5
+    pent.append(re)
+
+    fa_sos = note.Note('F#3')
+    fa_sos.duration.quarterLength = 0.5
+    pent.append(fa_sos)
+
+    la = note.Note('A3')
+    la.duration.quarterLength = 0.5
+    pent.append(la)
+
+    fa_sos2 = note.Note('F#3')
+    fa_sos2.duration.quarterLength = 0.5
+    pent.append(fa_sos2)
+
+    re2 = note.Note('D3')
+    re2.duration.quarterLength = 0.5
+    pent.append(re2)
+
+    si2 = note.Note('B2')
+    si2.duration.quarterLength = 0.5
+    pent.append(si2)
+
+    sol2 = note.Note('G2')
+    sol2.duration.quarterLength = 0.5
+    pent.append(sol2)
+
+    si3 = note.Note('B2')
+    si3.duration.quarterLength = 0.5
+    pent.append(si3)
+
+    re3 = note.Note('D3')
+    re3.duration.quarterLength = 0.5
+    pent.append(re3)
+
+    fa_sos3 = note.Note('F#3')
+    fa_sos3.duration.quarterLength = 0.5
+    pent.append(fa_sos3)
+
+    la2 = note.Note('A3')
+    la2.duration.quarterLength = 2
+    pent.append(la2)
+
 def wet_hands_left(pent):
-    first_part(pent)
-    second_part(pent)
+    for i in range(4):
+        first_part_left(pent)
+        second_part_left(pent)
+    third_part_left(pent)
 
 # Mano derecha de la cancion
 def first_part_right(pent):
@@ -79,10 +134,65 @@ def second_part_right(pent):
     sol_sos.duration.quarterLength = 3
     pent.append(sol_sos)
 
+    la = note.Note('A4')
+    la.duration.quarterLength = 1
+    pent.append(la)
+
+    fa_sos = note.Note('F#4')
+    fa_sos.duration.quarterLength = 3
+    pent.append(fa_sos)
+
+    mi = note.Note('E4')
+    mi.duration.quarterLength = 0.5
+    pent.append(mi)
+
+    fa_sos2 = note.Note('F#4')
+    fa_sos2.duration.quarterLength = 0.5
+    pent.append(fa_sos2)
+
+    sol_sos2 = note.Note('G#4')
+    sol_sos2.duration.quarterLength = 3
+    pent.append(sol_sos2)
+
+    si = note.Note('B4')
+    si.duration.quarterLength = 0.5
+    pent.append(si)
+
+    do_sos = note.Note('C#5')
+    do_sos.duration.quarterLength = 1
+    pent.append(do_sos)
+
+    fa_sos = note.Note('F#4')
+    fa_sos.duration.quarterLength = 2
+    pent.append(fa_sos)
+
+
+def third_part_right(pent):
+    silencio = note.Rest()
+    silencio.duration.quarterLength = 0.5
+    pent.append(silencio)
+
+    do_sos2 = note.Note('C#5')
+    do_sos2.duration.quarterLength = 0.5
+    pent.append(do_sos2)
+
+    mi2 = note.Note('E5')
+    mi2.duration.quarterLength = 1
+    pent.append(mi2)
+
+    sol = note.Note('G5')
+    sol.duration.quarterLength = 1.5
+    pent.append(sol)
+
+    fa_sos3 = note.Note('F#5')
+    fa_sos3.duration.quarterLength = 0.5
+    pent.append(fa_sos3)
+
 def wet_hands_right(pent):
     for i in range(2):
         first_part_right(pent)
     second_part_right(pent)
+    third_part_right(pent)
 
 pentagramaIzq = stream.Part()
 pentagramaDer = stream.Part()
@@ -90,12 +200,11 @@ pentagramaDer = stream.Part()
 tempoFunc(pentagramaIzq)
 tempoFunc(pentagramaDer)
 
-for i in range(2):
-    wet_hands_left(pentagramaIzq)
+
+wet_hands_left(pentagramaIzq)
 
 wet_hands_right(pentagramaDer) 
        
-
 
 score = stream.Score()
 score.append(pentagramaIzq)
