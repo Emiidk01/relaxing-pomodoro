@@ -177,7 +177,7 @@ def third_part_right(pent):
     pent.append(do_sos2)
 
     mi2 = note.Note('E5')
-    mi2.duration.quarterLength = 1
+    mi2.duration.quarterLength = 0.5
     pent.append(mi2)
 
     sol = note.Note('G5')
@@ -187,6 +187,18 @@ def third_part_right(pent):
     fa_sos3 = note.Note('F#5')
     fa_sos3.duration.quarterLength = 0.5
     pent.append(fa_sos3)
+
+    re = note.Note('D5')
+    re.duration.quarterLength = 1
+    pent.append(re)
+
+    la = note.Note('A5')
+    la.duration.quarterLength = 0.5
+    pent.append(la)
+
+    si = note.Note('B4')
+    si.duration.quarterLength = 4.5
+    pent.append(si)
 
 def wet_hands_right(pent):
     for i in range(2):
